@@ -28,7 +28,7 @@ def analyze_time_series_features(series: pd.Series) -> Dict:
     }
 
 def plot_pytimetk_analysis(series: pd.Series, title: str, output_path: Path):
- """Plot PyTimeTK analysis """
+    """Plot PyTimeTK analysis """
     fig, ax = plt.subplots(figsize=(10, 6))
     
     ax.plot(series.index, series.values, color="#4A90A4", linewidth=1.2)
