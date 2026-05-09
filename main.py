@@ -43,7 +43,7 @@ def main():
     else:
         raise ValueError("No data source specified")
     
-                        features = analyze_time_series_features(series)
+    features = analyze_time_series_features(series)
     logging.info(f"\nTime Series Features:")
     logging.info(f"Length: {features['length']}")
     logging.info(f"Mean: {features['mean']:.4f}")
