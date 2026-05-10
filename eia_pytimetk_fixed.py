@@ -36,7 +36,7 @@ def load_frame(cfg: Config) -> pd.DataFrame:
     return df
 
 
-def main():
+def main(plot: bool = False):
     cfg = Config()
     df = load_frame(cfg)
 
@@ -68,13 +68,14 @@ def main():
         dff["yoy_pct"] = dff["value"].pct_change(12) * 100.0
 
     # Minimalist visualization compatible with the article
-    fig, ax = plt.subplots(2, 1, figsize=(10, 6), sharex=False)
-    ax[0].plot(dff["date"], dff["value"], label="EIA monthly")
-    ax[0].legend()
-    ax[1].plot(dff["date"], dff["yoy_pct"], color="tab:orange", label="YoY %")
-    ax[1].axhline(0, color="k", lw=0.5)
-    ax[1].legend()
-    save_fig("eia_pytimetk_viz.png")
+    if plot:
+        fig, ax = plt.subplots(2, 1, figsize=(10, 6), sharex=False)
+        ax[0].plot(dff["date"], dff["value"], label="EIA monthly")
+        ax[0].legend()
+        ax[1].plot(dff["date"], dff["yoy_pct"], color="tab:orange", label="YoY %")
+        ax[1].axhline(0, color="k", lw=0.5)
+        ax[1].legend()
+        save_fig("eia_pytimetk_viz.png")
 
 
 if __name__ == "__main__":

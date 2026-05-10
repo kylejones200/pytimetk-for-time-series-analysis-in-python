@@ -27,13 +27,14 @@ def analyze_time_series_features(series: pd.Series) -> Dict:
         'volatility': series.pct_change().std()
     }
 
-def plot_pytimetk_analysis(series: pd.Series, title: str, output_path: Path):
+def plot_pytimetk_analysis(series: pd.Series, title: str, output_path: Path, plot: bool = False):
     """Plot PyTimeTK analysis """
-    fig, ax = plt.subplots(figsize=(10, 6))
+    if plot:
+        fig, ax = plt.subplots(figsize=(10, 6))
     
-    ax.plot(series.index, series.values, color="#4A90A4", linewidth=1.2)
-    ax.set_xlabel("Time")
-    ax.set_ylabel("Value")
+        ax.plot(series.index, series.values, color="#4A90A4", linewidth=1.2)
+        ax.set_xlabel("Time")
+        ax.set_ylabel("Value")
     
-    plt.savefig(output_path, dpi=100, bbox_inches="tight")
-    plt.close()
+        plt.savefig(output_path, dpi=100, bbox_inches="tight")
+        plt.close()
