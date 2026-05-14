@@ -33,10 +33,10 @@ Edit `config.yaml` to customize:
 ## PyTimeTK Features
 
 PyTimeTK provides:
-- **Time-based grouping**: `summarize_by_time()`
-- **Padding**: `pad_by_time()`
-- **Rolling operations**: Time-aware rolling functions
-- **Time series manipulation**: Date/time operations
+- Time-based grouping: `summarize_by_time()`
+- Padding: `pad_by_time()`
+- Rolling operations: Time-aware rolling functions
+- Time series manipulation: Date/time operations
 
 ## Caveats
 
