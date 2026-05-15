@@ -9,6 +9,7 @@ import logging
 import numpy as np
 import pandas as pd
 import pytimetk as tk
+np.random.seed(42)
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -19,7 +20,6 @@ logging.basicConfig(
 
 
 # Create a simulated time series dataset
-np.random.seed(42)
 n = 500
 time = pd.date_range(start="2020-01-01", periods=n, freq="D")
 values = 100 + np.cumsum(np.random.normal(0, 1, n))
