@@ -1,9 +1,7 @@
 """Core functions for PyTimeTK time series analysis."""
 
-import numpy as np
 import pandas as pd
 from pathlib import Path
-from typing import Dict
 import matplotlib.pyplot as plt
 import logging
 
@@ -17,7 +15,7 @@ def prepare_time_series_data(df: pd.DataFrame, date_col: str, value_col: str) ->
     df = df.set_index(date_col)
     return df[value_col]
 
-def analyze_time_series_features(series: pd.Series) -> Dict:
+def analyze_time_series_features(series: pd.Series) -> dict:
     """Analyze time series features."""
     return {
         'length': len(series),

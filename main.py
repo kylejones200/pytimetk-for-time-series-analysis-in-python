@@ -18,7 +18,7 @@ def load_config(config_path: Path = None) -> dict:
     if config_path is None:
         config_path = Path(__file__).parent / 'config.yaml'
     
-    with open(config_path, 'r') as f:
+    with open(config_path) as f:
         return yaml.safe_load(f)
 
 def main():
@@ -44,7 +44,7 @@ def main():
         raise ValueError("No data source specified")
     
     features = analyze_time_series_features(series)
-    logging.info(f"\nTime Series Features:")
+    logging.info("\nTime Series Features:")
     logging.info(f"Length: {features['length']}")
     logging.info(f"Mean: {features['mean']:.4f}")
     logging.info(f"Volatility: {features['volatility']:.4f}")
