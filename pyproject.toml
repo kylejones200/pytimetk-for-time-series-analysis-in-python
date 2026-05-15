@@ -1,0 +1,13 @@
+[project]
+name = "pytimetk-for-time-series-analysis-in-python"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.10.9",
+    "numpy>=2.4.4",
+    "pandas>=3.0.3",
+    "pytest>=9.0.3",
+    "pytimetk>=2.5.0",
+    "pyyaml>=6.0.3",
+    "scikit-learn>=1.8.0",
+]
