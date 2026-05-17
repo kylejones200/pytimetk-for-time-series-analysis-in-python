@@ -10,9 +10,11 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
 
-def main() -> None:
+def notebook_step_001() -> None:
     df.head()
 
+
+def load_data() -> None:
     df = pd.read_csv("ercot_load_data.csv")
 
     df["date"] = pd.to_datetime(df["date"])
@@ -31,6 +33,8 @@ def main() -> None:
 
     fig.show()
 
+
+def feature_engineering() -> None:
     "\nFeature Engineering\nCreate lagged features, rolling averages, and Fourier terms for machine learning.\n"
 
     rolled_df_7 = tk.augment_rolling_apply(
@@ -61,6 +65,8 @@ def main() -> None:
 
     rolled_df.tail()
 
+
+def filter_data_for_the_year_2021() -> None:
     "\nTime-Based Filtering\nFilter data for a specific time period.\n"
 
     df_filtered = tk.filter_by_time(df, date_column="date", start_date="2025-01-01")
@@ -79,6 +85,8 @@ def main() -> None:
 
     fig.show()
 
+
+def step_2_feature_engineering() -> None:
     df.sort_values(by="date", inplace=True)
 
     df_features = tk.augment_lags(
@@ -160,10 +168,16 @@ def main() -> None:
 
     fig.show()
 
+
+def notebook_step_006() -> None:
     plot_df.to_csv("plot.csv")
 
+
+def notebook_step_007() -> None:
     df.tail()
 
+
+def notebook_step_008() -> None:
     train_columns = ["values"]
 
     X = train[train_columns]
@@ -182,6 +196,8 @@ def main() -> None:
 
     future.head(10)
 
+
+def ensure_indices_of_predictions_and_test_target_ma() -> None:
     assert len(y_pred) == len(y_test), (
         "Mismatch in lengths of predictions and actual values."
     )
@@ -190,6 +206,8 @@ def main() -> None:
         "Mismatch in indices of predictions and actual values."
     )
 
+
+def adjust_plotting_for_clarity() -> None:
     fig = tk.plot_timeseries(
         plot_df,
         date_column="date",
@@ -202,6 +220,8 @@ def main() -> None:
 
     fig.show()
 
+
+def train_the_model() -> None:
     lr_model = LinearRegression()
 
     lr_model.fit(X_train, y_train)
@@ -212,6 +232,8 @@ def main() -> None:
 
     print(f"Linear Regression MSE: {mse_lr:.4f}")
 
+
+def check_for_obvious_alignment_issues() -> None:
     print(f"First few test dates: {test['date'].head()}")
 
     print(f"First few prediction dates: {test.index[:5]}")
@@ -234,15 +256,45 @@ def main() -> None:
 
     plt.show()
 
+
+def notebook_step_014() -> None:
     df.drop_duplicates(inplace=True)
 
+
+def notebook_step_015() -> None:
     df.shape
 
+
+def notebook_step_016() -> None:
     df.set_index("date", inplace=True)
 
+
+def notebook_step_017() -> None:
     df.sort_index(inplace=True)
 
+
+def notebook_step_018() -> None:
     df.to_csv("ercot_load_data.csv")
+
+
+def main() -> None:
+    notebook_step_001()
+    load_data()
+    feature_engineering()
+    filter_data_for_the_year_2021()
+    step_2_feature_engineering()
+    notebook_step_006()
+    notebook_step_007()
+    notebook_step_008()
+    ensure_indices_of_predictions_and_test_target_ma()
+    adjust_plotting_for_clarity()
+    train_the_model()
+    check_for_obvious_alignment_issues()
+    notebook_step_014()
+    notebook_step_015()
+    notebook_step_016()
+    notebook_step_017()
+    notebook_step_018()
 
 
 if __name__ == "__main__":
