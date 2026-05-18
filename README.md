@@ -2,6 +2,14 @@
 
 This project demonstrates using PyTimeTK for time series analysis and manipulation.
 
+## Business context
+
+`pytimetk` is a time series analysis and forecasting in Python inspired by the R package `timetk`.
+
+It has some nifty tools for feature engineering and visualization (be careful, the creators spell it the British way "visualisation"). The visualization is my favorite part. It uses plotly under the hood so the graphs are interactive --- unfortunately the graphs are static in medium.
+
+Feature Engineering is really easy in `pytimetk` --- including more advanced concepts like Fast Fourier Transforms. The time-based filtering and aggregation is ok --- but I will probably use Pandas for this in the future.
+
 ## Article
 
 Medium article: [PyTimeTK for Time Series Analysis in Python](https://medium.com/@kylejones_47003/pytimetk-for-time-series-analysis-in-python-92f725352d99)
