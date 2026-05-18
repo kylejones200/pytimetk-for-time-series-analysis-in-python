@@ -18,7 +18,7 @@ logging.basicConfig(
 )
 
 
-def load_config(config_path: Path = None) -> dict:
+def load_config(config_path: Path | None = None) -> dict:
     """Load configuration from YAML file."""
     if config_path is None:
         config_path = Path(__file__).parent / "config.yaml"
@@ -37,7 +37,6 @@ def main():
         "--output-dir", type=Path, default=None, help="Output directory"
     )
     args = parser.parse_args()
-
     config = load_config(args.config)
     output_dir = (
         Path(args.output_dir)
@@ -45,7 +44,6 @@ def main():
         else Path(config["output"]["figures_dir"])
     )
     output_dir.mkdir(exist_ok=True)
-
     if args.data_path and args.data_path.exists():
         df = pd.read_csv(args.data_path)
         series = prepare_time_series_data(
@@ -69,11 +67,9 @@ def main():
     logging.info(f"Mean: {features['mean']:.4f}")
     logging.info(f"Volatility: {features['volatility']:.4f}")
     logging.info(f"Trend: {features['trend']}")
-
     plot_pytimetk_analysis(
         series, "PyTimeTK Time Series Analysis", output_dir / "pytimetk_analysis.png"
     )
-
     logging.info(f"\nAnalysis complete. Figures saved to {output_dir}")
 
 

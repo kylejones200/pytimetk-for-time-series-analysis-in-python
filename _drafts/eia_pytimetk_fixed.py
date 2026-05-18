@@ -28,8 +28,6 @@ def load_frame(cfg: Config) -> pd.DataFrame:
 def main(plot: bool = False):
     cfg = Config()
     df = load_frame(cfg)
-
-    used_pytimetk = False
     # Attempt to use pytimetk to augment calendar features and produce a small summary
     try:
         import pytimetk as tkt
@@ -48,7 +46,6 @@ def main(plot: bool = False):
         # Compute yoy change using groupby if signature present or from base df
         dff = dff.sort_values("date")
         dff["yoy_pct"] = dff["value"].pct_change(12) * 100.0
-        used_pytimetk = True
     except Exception:
         # Fallback: manual calendar features and yoy
         dff = df.copy()
